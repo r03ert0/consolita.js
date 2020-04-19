@@ -21,7 +21,7 @@ var Consolita = (function () {
         lookbehind: true
       }
     }));
-    const textarea = document.querySelector("#editor textarea");
+    const textarea = document.querySelector(`${sel} textarea`);
 
     flask.originalHandleNewLineIndentation = flask.handleNewLineIndentation;
     flask.handleNewLineIndentation = (e) => {
