@@ -51,15 +51,19 @@ var Consolita = (function () {
       switch(e.code) {
         case 'ArrowUp':
           e.preventDefault();
+          e.stopPropagation();
           displayHistory('up');
           break;
         case 'ArrowDown':
           e.preventDefault();
+          e.stopPropagation();
           displayHistory('down');
           break;
         case 'KeyK':
           if(e.metaKey) {
             flask.updateCode("");
+            e.preventDefault();
+            e.stopPropagation();
           }
           break;
       }
