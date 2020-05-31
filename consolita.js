@@ -14,7 +14,7 @@ var Consolita = (function () {
 
   var init = function (el) {
     // extend default javascript to include messages
-    flask = new CodeFlask(sel, { language: 'js_messages'});
+    flask = new CodeFlask(el, { language: 'js_messages'});
     flask.addLanguage('js_messages', Prism.languages.extend('javascript', {
       'message': {
         pattern: /(^|[^\\])#.*/,
