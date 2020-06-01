@@ -12,16 +12,20 @@ var Consolita = (function () {
   const history = [];
   let historyCursor = 0;
 
-  var init = function (sel) {
+  var init = function (el, styleParent) {
+    const opts = {language: 'js_messages'};
+    if(typeof styleParent !== 'undefined') {
+      opts.styleParent = styleParent;
+    }
     // extend default javascript to include messages
-    flask = new CodeFlask(sel, { language: 'js_messages'});
+    flask = new CodeFlask(el, opts);
     flask.addLanguage('js_messages', Prism.languages.extend('javascript', {
       'message': {
         pattern: /(^|[^\\])#.*/,
         lookbehind: true
       }
     }));
-    const textarea = document.querySelector(`${sel} textarea`);
+    const textarea = el.querySelector("textarea");
 
     flask.originalHandleNewLineIndentation = flask.handleNewLineIndentation;
     flask.handleNewLineIndentation = (e) => {
